@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='style.css')}}" rel="stylesheet" />
+    <title>Класс</title>
+</head>
+<body>
+    <li><a href="{{ url_for('hello_teacher') }}">Вернуться в главное меню</a></li> 
+    <h1>{{ group }}</h1>
+ 
+<div class="content">
+    {% block content %}
+    <ol>
+        {% for student in students %}
+        <li>{{ student.fullname }}  id:{{ student.id }}</li>
+        {% endfor %}
+    </ol>
+    <ul>
+        {% for course in courses %}
+        <li>
+            <a href="{{ url_for('get_estimates_table', group=group, course=course.course_name) }}">{{ course.course_name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+</div>
+</body> 
+</html>
+ 

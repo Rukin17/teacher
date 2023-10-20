@@ -1,10 +1,34 @@
-{% extends 'menu.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='style.css')}}" rel="stylesheet" />
+    <title>Журнал</title>
+</head>
+<body>
+    <ul class="mainmenu">
+        <li><a href="{{ url_for('hello_teacher') }}">Вернуться в главное меню</a></li>
+        <li><a href="{{ url_for('add_student_and_class') }}">Добавить студента</a></li>
+        <li><a href="{{ url_for('delete_student') }}">Удалить студента</a></li>
+        <li><a href="{{ url_for('add_course') }}">Добавить предмет</a></li>
+    </ul>
 
-{% block content %}
-<form action="" method="post" class="form-contact">
-    <p><label>Класс: </label> <input type="text" name="group_name" value="" requied/>
-    <p><label>Полное имя: </label> <input type="text" name="fullname" value="" requied/>
-    <p><input type="submit" value="Добавить студента"/>
-
-</form>
-{% endblock %}
+<div class="content">
+    {% block content %}
+    <ul>
+        {% for student in all_students %}
+        <li><p>id: {{student.id}}, Имя: {{ student.fullname }}</p>
+            <ul>
+                {% for group in groups %}
+                {% if student.group_id == group.id: %}
+                    <li>Класс: {{ group.group_name }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endblock %}
+</div>
+</body> 
+</html>
+ 

@@ -6,11 +6,9 @@
 </head>
 <body>
     <ul class="mainmenu">
-        <li><a href="{{ url_for('students_in_class') }}">Выбрать класс</a></li>
         <li><a href="{{ url_for('edit_journal') }}">Редактировать журнал</a></li>
-        
+        <li><a href="{{ url_for('journal') }}">Журнал</a></li>
     </ul>
-
 <div class="content">
     {% block content %}
     {% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'groups.html' %}
+
+{% block content %}
+<ol>
+    {% for student in students %}
+    <li>
+            {{ student.fullname }}  id:{{ student.id }}
+    </li>
+    {% endfor %}
+</ol>
+<form action="" method="post" class="form-contact">
+        <p><label>id Студента: </label> <input type="text" name="student_id" value="" requied/>
+        <p><label>Оценка: </label> <input type="text" name="estimate" value="" requied/>
+        <p><input type="submit" value="Поставить оценку"/>
+</form>
+{% endblock %}

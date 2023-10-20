@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" href="{{ url_for('static', filename='style.css')}}" rel="stylesheet" />
+    <title>Журнал</title>
+</head>
+<body>
+    <ul class="menu">
+      <li><a href="{{ url_for('hello_teacher') }}">Вернуться в главное меню</a></li>  
+      {% for group in groups %}
+      <li><a href="{{ url_for('get_group', group=group.group_name) }}" >{{ group.group_name }}</a></li>
+      {% endfor %}
+    </ul>
+
+</body> 
+</html>
