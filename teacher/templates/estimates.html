@@ -1,0 +1,40 @@
+{% extends 'groups.html' %}
+
+{% block content %}
+<p><label>Оценки</label></p>
+
+<li>Журнал {{ group }}:   {{ course }}</li>
+<table>
+    <thead>
+      <tr>
+        <th scope="col">Имя студента</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+        <th scope="col">Оценка</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+      <tr>
+        <th scope="row">{{ student.fullname }} id:{{ student.id }}</th>
+        {% for estimate in estimates %}
+            {% if estimate.student_id == student.id %}
+
+                <td>{{ estimate.estimate }}</td>
+            {% endif %}
+        {% endfor %}        
+      </tr>
+      {% endfor %}
+  </table>
+<ul class="mainmenu">
+    <li><a href="{{ url_for('add_estimate', group=group, course=course) }}">Поставить оценку</a></li>
+</ul>
+{% endblock %}
+
